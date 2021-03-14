@@ -1,0 +1,87 @@
+canvas {
+    margin: auto;
+    display: block;
+    border-radius: .8rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:rgba(174, 238, 238, 0.5);
+}
+body {
+    background-image:url("../img/bk.png");
+    background-size:cover
+}
+
+.font-400{
+    font-family: 'Long Cang', cursive;
+}
+
+.body-index {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border-radius: 1rem;
+    padding-bottom: 20px;
+    background-color: rgb(246 250 251 / 70%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    animation-name: index;
+    animation-timing-function: ease;
+    animation-duration: 1s;
+}
+
+.cardpart{
+    background-color:rgba(174, 238, 238, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: none;
+    width: 13rem;
+    margin: 0 auto;
+}
+
+.cntdown, .lose, .win{
+    position: absolute;
+    left: 240px;
+    top: 150px;
+    font-size: 150px;
+    color: rgba(255, 0, 0, 0.8);
+    z-index: 9999;
+
+    visibility: hidden;
+    animation-name: cntdown;
+    animation-timing-function: ease;
+    animation-duration: 1.5s;
+    animation-play-state: paused;
+}
+
+@keyframes cntdown{
+    0%{}
+    1%{
+        visibility: visible;
+        left: 150px;
+        top: 100px;
+        font-size: 200px;
+    }
+    80%{
+        visibility: visible;
+        left: 200px;
+        top: 150px;
+        font-size: 80px;
+        color: rgba(255, 0, 0, 0.7);
+    }
+    100%{
+        visibility: visible;
+        left: 200px;
+        top: 150px;
+        font-size: 80px;
+        color: rgba(255, 0, 0, 1);
+    }
+}
+
+@keyframes index{
+    from{
+        position: relative;
+        top: 500px;
+    }
+    to{
+        position: relative;
+        top: 20px;
+    }
+}
