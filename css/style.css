@@ -43,15 +43,17 @@ body {
     font-size: 150px;
     color: rgba(255, 0, 0, 0.8);
     z-index: 9999;
-
     visibility: hidden;
-    animation-name: cntdown;
-    animation-timing-function: ease;
-    animation-duration: 1.5s;
-    animation-play-state: paused;
 }
 
-@keyframes cntdown{
+.tipanimation{
+    animation-name: tip;
+    animation-timing-function: ease;
+    animation-duration: 1.5s;
+    /* animation-play-state: paused; */
+}
+
+@keyframes tip{
     0%{}
     1%{
         visibility: visible;

@@ -16,13 +16,27 @@ function dfs(x, y, deep) {
         x = 2;
         y = 0;
     }
+    var next = new Array();
     for(var i = 0; i < 4; i++){
         var xx = x + dir[i][0];
         var yy = y + dir[i][1];
         if(xx < 0 || yy < 0 || xx > r - 1 || yy > c - 1 || maze[xx][yy] == 1 || vis[xx * c + yy] == true) continue;
+        next.push({x: xx, y: yy});
+    }
+    var len = next.length;
+    for(var i = 0; i < len; i++){
+        var xx = next[i].x;
+        var yy = next[i].y;
         vis[xx * c + yy] = true;
         if(dfs(xx, yy, deep + 1) == true){
-            if(deep == 0) enermy = {x: xx, y: yy}, enermyWaite = 200;
+            if(deep == 0){
+                var index = Math.floor(Math.random()*len);
+                if(Math.random() >= 0.4 || len > 2)
+                    enermy = {x: xx, y: yy};
+                else
+                    enermy = {x: next[index].x, y: next[index].y};
+                enermyWaite = 150;
+            }
             return true;
         }
         vis[xx * c + yy] = false;
@@ -46,7 +60,7 @@ function start() {
         initMaze();
         isStart = true;
         isEnd = false;
-        document.getElementById("cnt").style.animationPlayState = "running";
+        startAnimation(document.getElementById("stgame"));
         window.requestAnimationFrame(enermyGo);
     } 
     else
@@ -56,11 +70,11 @@ function start() {
 function checkGame() {
     if(now.x == r - 2 && now.y == c - 1){
         reset();
-        document.getElementById("win").style.animationPlayState = "running";
+        startAnimation(document.getElementById("win"))
     }
     else if(now.x == enermy.x && now.y == enermy.y){
         reset();
-        document.getElementById("lose").style.animationPlayState = "running";
+        startAnimation(document.getElementById("lose"));
     }
 }
 
@@ -75,4 +89,12 @@ function reset() {
 
 function closeWarning() {
     document.getElementById("warning").style.display = "none";
+}
+
+function startAnimation(element) {
+    element.classList.add("tipanimation");
+    // element.style.animationPlayState = "running";
+    element.addEventListener("animationend", function() {
+        this.classList.remove("tipanimation");
+    });
 }
