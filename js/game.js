@@ -31,7 +31,7 @@ function dfs(x, y, deep) {
         if(dfs(xx, yy, deep + 1) == true){
             if(deep == 0){
                 var index = Math.floor(Math.random()*len);
-                if(Math.random() >= 0.4 || len > 2)
+                if(Math.random() >= 0.4 || len <= 2)
                     enermy = {x: xx, y: yy};
                 else
                     enermy = {x: next[index].x, y: next[index].y};
@@ -67,6 +67,7 @@ function start() {
         document.getElementById("warning").style.display = "";
 }
 
+//检查游戏是否结束
 function checkGame() {
     if(now.x == r - 2 && now.y == c - 1){
         reset();
@@ -78,6 +79,7 @@ function checkGame() {
     }
 }
 
+//重置游戏
 function reset() {
     now = {x: 2, y: 0};
     enermy = {x: -1, y: -1};
@@ -91,9 +93,9 @@ function closeWarning() {
     document.getElementById("warning").style.display = "none";
 }
 
+//播放动画
 function startAnimation(element) {
     element.classList.add("tipanimation");
-    // element.style.animationPlayState = "running";
     element.addEventListener("animationend", function() {
         this.classList.remove("tipanimation");
     });

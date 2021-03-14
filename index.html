@@ -64,17 +64,16 @@
         
             let model, webcam, labelContainer, maxPredictions;
             var frame = 0;
-            var now = {x: 2, y: 0};
-            var enermy = {x: -1, y: -1};
-            var enermyWaite = 2000;
-            var isStart = false;
-            var ready = false;
-            var isEnd = true;
+            var now = {x: 2, y: 0};         //玩家所在坐标
+            var enermy = {x: -1, y: -1};    //敌人所在坐标
+            var enermyWaite = 3000;         //玩家出发后敌人多少时间内不出来
+            var isStart = false;            //游戏是否开始
+            var ready = false;              //摄像头是否准备完毕
+            var isEnd = true;               //游戏是否结束
             const dir = [[1, 0], [-1, 0], [0, 1], [0, -1]];
         
-            var maze = new Array();
-            var list = new Array();
-            const r = 50, c = 50;
+            var maze = new Array();         //迷宫地图
+            const r = 50, c = 50;           //地图尺寸
             init();
         </script>
     </body>
