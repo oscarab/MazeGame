@@ -37,12 +37,15 @@ async function enermyGo(){
     vis[enermy.x * c + enermy.y] = true;
     dfs(enermy.x, enermy.y, 0);
     checkGame();
-    window.requestAnimationFrame(enermyGo);
+    if(isEnd == false)
+        window.requestAnimationFrame(enermyGo);
 }
 
 function start() {
-    if(ready){
+    if(ready && isEnd){
+        initMaze();
         isStart = true;
+        isEnd = false;
         document.getElementById("cnt").style.animationPlayState = "running";
         window.requestAnimationFrame(enermyGo);
     } 
@@ -64,8 +67,9 @@ function checkGame() {
 function reset() {
     now = {x: 2, y: 0};
     enermy = {x: -1, y: -1};
-    enermyWaite = 1200;
+    enermyWaite = 2000;
     isStart = false;
+    isEnd = true;
     initMaze();
 }
 

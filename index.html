@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="warning" class="alert alert-warning" role="alert">
-            摄像头尚未准备就绪！
+            暂时无法开始游戏！
             <button type="button" class="close" onclick="closeWarning()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -66,10 +66,10 @@
             var frame = 0;
             var now = {x: 2, y: 0};
             var enermy = {x: -1, y: -1};
-            var enermyWaite = 1200;
+            var enermyWaite = 2000;
             var isStart = false;
             var ready = false;
-            var isEnd = 0;
+            var isEnd = true;
             const dir = [[1, 0], [-1, 0], [0, 1], [0, -1]];
         
             var maze = new Array();
