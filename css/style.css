@@ -11,15 +11,14 @@ body {
 }
 
 .font-400{
-    font-family: 'Long Cang', cursive;
+    font-family: 'MyFontName';
 }
 
 .body-index {
     margin-top: 50px;
-    margin-bottom: 30px;
     border-radius: 1rem;
-    padding-bottom: 20px;
-    background-color: rgb(246 250 251 / 70%);
+    padding-bottom: 50px;
+    background-color: rgb(246 250 251 / 85%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     animation-name: index;
@@ -27,13 +26,41 @@ body {
     animation-duration: 1s;
 }
 
+.index-title{
+    text-align: center;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+
 .cardpart{
     background-color:rgba(174, 238, 238, 0.5);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1rem;
     border: none;
-    width: 13rem;
-    margin: 0 auto;
+    width: 80%;
+    margin: auto;
+}
+
+.record{
+    margin-top: 20%;
+}
+
+.recode-text{
+    font-size: 400%;
+    text-align: center;
+}
+
+.direc{
+    font-size: 150%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#LEFT, #RIGHT, #UP, #DOWN, #NOTHING{
+    margin-left: 5%;
+    display: inline;
 }
 
 .cntdown, .lose, .win{
@@ -86,4 +113,9 @@ body {
         position: relative;
         top: 20px;
     }
+}
+
+@font-face {
+    font-family: MyFontName;
+    src: url("Pix\ Body.TTF");
 }

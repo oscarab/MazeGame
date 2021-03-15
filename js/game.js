@@ -55,11 +55,21 @@ async function enermyGo(){
         window.requestAnimationFrame(enermyGo);
 }
 
+function PrefixInteger(num, n) {
+    return (Array(n).join(0) + num).slice(-n);
+}
+
+//开始游戏
 function start() {
     if(ready && isEnd){
         initMaze();
         isStart = true;
         isEnd = false;
+        timecnt = setInterval(function(){
+            sec++;
+            var min = parseInt(sec / 60);
+            document.getElementById("recode-text").innerText = PrefixInteger(min, 2) + ":" + PrefixInteger(sec % 60, 2);
+        }, 1000);
         startAnimation(document.getElementById("stgame"));
         window.requestAnimationFrame(enermyGo);
     } 
@@ -71,7 +81,7 @@ function start() {
 function checkGame() {
     if(now.x == r - 2 && now.y == c - 1){
         reset();
-        startAnimation(document.getElementById("win"))
+        startAnimation(document.getElementById("win"));
     }
     else if(now.x == enermy.x && now.y == enermy.y){
         reset();
@@ -86,6 +96,8 @@ function reset() {
     enermyWaite = 2000;
     isStart = false;
     isEnd = true;
+    window.clearInterval(timecnt);
+    sec = 0;
     initMaze();
 }
 

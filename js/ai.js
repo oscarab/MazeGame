@@ -14,11 +14,11 @@ async function initAI() {
     document.getElementById("webcam").remove();
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     labelContainer = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions; i++) {
-        var div = document.createElement("div");
-        div.style.textAlign = "center";
-        labelContainer.appendChild(div);
-    }
+    // for (let i = 0; i < maxPredictions; i++) {
+    //     var div = document.createElement("div");
+    //     div.style.textAlign = "center";
+    //     labelContainer.appendChild(div);
+    // }
 }
 
 async function loop() {
@@ -34,9 +34,7 @@ async function predict() {
     for (let i = 0; i < maxPredictions; i++) {
         var type = prediction[i].className;
         var probability = prediction[i].probability.toFixed(2);
-        const classPrediction = type + ": " + probability;
-        labelContainer.childNodes[i].innerHTML = classPrediction;
-
+        document.getElementById(type).innerHTML = probability;
         if(probability > 0.90) choose = type;
     }
     if(frame++ > 20 && isStart){
