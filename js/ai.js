@@ -24,8 +24,8 @@ async function loop() {
 
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
-    var choose;
-    var chpro = 0;
+    var choose;     //选择的类型
+    var chpro = 0;  //概率
     ready = true;
     for (let i = 0; i < maxPredictions; i++) {
         var type = prediction[i].className;

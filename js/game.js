@@ -48,9 +48,9 @@ function enermyGo(){
         vis[i] = false;
     }
     vis[enermy.x * c + enermy.y] = true;
-    updateProgress();
-    dfs(enermy.x, enermy.y, 0);
-    checkGame();
+    updateProgress();               //更新进度条
+    dfs(enermy.x, enermy.y, 0);     //让敌人走一步
+    checkGame();                    //检查游戏是否已经结束
 }
 
 function PrefixInteger(num, n) {
@@ -63,6 +63,7 @@ function start() {
         initMaze();
         isStart = true;
         isEnd = false;
+        document.getElementById("startgame").disabled = true;
         timecnt = setInterval(function(){
             sec++;
             var min = parseInt(sec / 60);
@@ -94,6 +95,7 @@ function reset() {
     enermyWaite = 30;
     isStart = false;
     isEnd = true;
+    document.getElementById("startgame").disabled = false;
     window.clearInterval(timecnt);
     window.clearInterval(enermyThread);
     sec = 0;
@@ -112,6 +114,7 @@ function startAnimation(element) {
     });
 }
 
+//更新进度条
 function updateProgress(){
     var percent =  1 - (((r - 2) - now.x) + ((c - 1) - now.y)) / (((r - 2) - 2) + ((c - 1) - 0));
     percent *= 100;
