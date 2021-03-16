@@ -35,7 +35,6 @@ function dfs(x, y, deep) {
                     enermy = {x: xx, y: yy};
                 else
                     enermy = {x: next[index].x, y: next[index].y};
-                enermyWaite = 150;
             }
             return true;
         }
@@ -44,15 +43,13 @@ function dfs(x, y, deep) {
     return false;
 }
 
-async function enermyGo(){
+function enermyGo(){
     for(var i = 0; i <= r * c; i++){
         vis[i] = false;
     }
     vis[enermy.x * c + enermy.y] = true;
     dfs(enermy.x, enermy.y, 0);
     checkGame();
-    if(isEnd == false)
-        window.requestAnimationFrame(enermyGo);
 }
 
 function PrefixInteger(num, n) {
@@ -71,7 +68,7 @@ function start() {
             document.getElementById("recode-text").innerText = PrefixInteger(min, 2) + ":" + PrefixInteger(sec % 60, 2);
         }, 1000);
         startAnimation(document.getElementById("stgame"));
-        window.requestAnimationFrame(enermyGo);
+        enermyThread = setInterval(enermyGo, 1000);
     } 
     else
         document.getElementById("warning").style.display = "";
@@ -97,6 +94,7 @@ function reset() {
     isStart = false;
     isEnd = true;
     window.clearInterval(timecnt);
+    window.clearInterval(enermyThread);
     sec = 0;
     initMaze();
 }

@@ -30,7 +30,7 @@
                         <div class="card-body">
                             <h3 class="card-title" style="text-align: center;">游戏介绍</h3>
                             <p class="card-text">
-                                你需要逃离这个迷宫，绿点代表你的位置，小心后面追赶你的红点
+                                你需要逃离这个迷宫，绿点代表你的位置，小心后面追赶你的红点。在镜头前转动画有黑色箭头的纸来操纵。
                             </p>
                             <div style="text-align: center;"><button class = "btn btn-primary btn-lg" type="button" onclick="start()">开始游戏</button></div>
                         </div>
@@ -58,7 +58,6 @@
                         <div class="direc"><span class="badge badge-primary">←</span><p id="LEFT"></p></div>
                         <div class="direc"></p><span class="badge badge-primary">无</span><p id="NOTHING"></div>
                     </div>
-                    <!-- <div id="label-container"></div> -->
                 </div>
             </div>
         </div>
@@ -69,19 +68,21 @@
             // More API functions here:
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
         
-            //const URL = "https://teachablemachine.withgoogle.com/models/5mxr6XOrh/";
+            // const URL = "https://teachablemachine.withgoogle.com/models/7NSj8Fi6a/";
+            // const URL = "https://teachablemachine.withgoogle.com/models/7NSj8Fi6a/";
             const URL = "https://teachablemachine.withgoogle.com/models/7NSj8Fi6a/";
         
             let model, webcam, labelContainer, maxPredictions;
             var frame = 0;
             var now = {x: 2, y: 0};         //玩家所在坐标
             var enermy = {x: -1, y: -1};    //敌人所在坐标
-            var enermyWaite = 3000;         //玩家出发后敌人多少时间内不出来
+            var enermyWaite = 30;           //玩家出发后敌人多少时间内不出来
             var isStart = false;            //游戏是否开始
             var ready = false;              //摄像头是否准备完毕
             var isEnd = true;               //游戏是否结束
             var sec = 0;                    //游戏已进行秒数
             var timecnt;
+            var enermyThread;
             const dir = [[1, 0], [-1, 0], [0, 1], [0, -1]];
         
             var maze = new Array();         //迷宫地图

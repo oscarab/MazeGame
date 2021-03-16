@@ -14,11 +14,6 @@ async function initAI() {
     document.getElementById("webcam").remove();
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     labelContainer = document.getElementById("label-container");
-    // for (let i = 0; i < maxPredictions; i++) {
-    //     var div = document.createElement("div");
-    //     div.style.textAlign = "center";
-    //     labelContainer.appendChild(div);
-    // }
 }
 
 async function loop() {
@@ -30,12 +25,13 @@ async function loop() {
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
     var choose;
+    var chpro = 0;
     ready = true;
     for (let i = 0; i < maxPredictions; i++) {
         var type = prediction[i].className;
-        var probability = prediction[i].probability.toFixed(2);
-        document.getElementById(type).innerHTML = probability;
-        if(probability > 0.90) choose = type;
+        var probability = prediction[i].probability.toFixed(2) * 100;
+        document.getElementById(type).innerHTML = parseInt(probability) + "%";
+        if(probability > chpro && probability > 85) choose = type, chpro = probability;
     }
     if(frame++ > 20 && isStart){
         frame = 0;

@@ -65,12 +65,12 @@ body {
 
 .cntdown, .lose, .win{
     position: absolute;
-    left: 240px;
-    top: 150px;
+    left: 35%;
+    top: 40%;
     font-size: 150px;
     color: rgba(255, 0, 0, 0.8);
     z-index: 9999;
-    white-space:nowrap;
+    white-space: nowrap;
     visibility: hidden;
 }
 
