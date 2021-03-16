@@ -33,7 +33,7 @@ async function predict() {
         document.getElementById(type).innerHTML = parseInt(probability) + "%";
         if(probability > chpro && probability > 85) choose = type, chpro = probability;
     }
-    if(frame++ > 20 && isStart){
+    if(frame++ > 10 && isStart){
         frame = 0;
         if(choose == "UP"){
             if(now.x > 0 && maze[now.x - 1][now.y] == 0)

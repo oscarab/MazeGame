@@ -48,6 +48,7 @@ function enermyGo(){
         vis[i] = false;
     }
     vis[enermy.x * c + enermy.y] = true;
+    updateProgress();
     dfs(enermy.x, enermy.y, 0);
     checkGame();
 }
@@ -90,7 +91,7 @@ function checkGame() {
 function reset() {
     now = {x: 2, y: 0};
     enermy = {x: -1, y: -1};
-    enermyWaite = 2000;
+    enermyWaite = 30;
     isStart = false;
     isEnd = true;
     window.clearInterval(timecnt);
@@ -109,4 +110,13 @@ function startAnimation(element) {
     element.addEventListener("animationend", function() {
         this.classList.remove("tipanimation");
     });
+}
+
+function updateProgress(){
+    var percent =  1 - (((r - 2) - now.x) + ((c - 1) - now.y)) / (((r - 2) - 2) + ((c - 1) - 0));
+    percent *= 100;
+    percent = parseInt(percent);
+    var mazeprogress = document.getElementById("mazeprogress");
+    mazeprogress.style.width = percent + "%";
+    mazeprogress.innerHTML = percent + "%";
 }

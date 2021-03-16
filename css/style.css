@@ -74,6 +74,10 @@ body {
     visibility: hidden;
 }
 
+.mazeprogress{
+    margin-top: 1.8%;
+}
+
 .tipanimation{
     animation-name: tip;
     animation-timing-function: ease;
