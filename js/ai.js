@@ -7,7 +7,7 @@ async function initAI() {
 
     const flip = true;
     webcam = new tmImage.Webcam(200, 200, flip);
-    await webcam.setup();
+    await webcam.setup();       //打开摄像头
     await webcam.play();
     window.requestAnimationFrame(loop);
 
@@ -16,12 +16,14 @@ async function initAI() {
     labelContainer = document.getElementById("label-container");
 }
 
+//更新摄像头界面
 async function loop() {
     webcam.update();
     await predict();
     window.requestAnimationFrame(loop);
 }
 
+//预测
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
     var choose;     //选择的类型

@@ -73,7 +73,7 @@ async function draw() {
                 ctx.fillRect(j * 10, i * 10, 10, 10);
                 ctx.fillStyle = 'black';
             }
-            else if(i == enermy.x && j == enermy.y){
+            else if(i == enemy.x && j == enemy.y){
                 ctx.fillStyle = 'red';
                 ctx.fillRect(j * 10, i * 10, 10, 10);
                 ctx.fillStyle = 'black';
@@ -100,5 +100,5 @@ function redrawBot(bot) {
     ctx.fillStyle = 'white';
     ctx.fillRect(bot.y * 10, bot.x * 10, 10, 10);
     ctx.fillStyle = 'red';
-    ctx.fillRect(enermy.y * 10, enermy.x * 10, 10, 10);
+    ctx.fillRect(enemy.y * 10, enemy.x * 10, 10, 10);
 }

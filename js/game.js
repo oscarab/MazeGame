@@ -7,12 +7,12 @@ async function init() {
 var vis = new Array();
 function dfs(x, y, deep) {      //通过dfs搜索走向玩家的路径
     if(x == now.x && y == now.y) return true;
-    if(enermyWaite > 0){
-        enermyWaite--;
+    if(enemyWaite > 0){
+        enemyWaite--;
         return false;
     }
     if(x == -1){
-        enermy = {x: 2, y: 0};
+        enemy = {x: 2, y: 0};
         x = 2;
         y = 0;
     }
@@ -31,11 +31,11 @@ function dfs(x, y, deep) {      //通过dfs搜索走向玩家的路径
         if(dfs(xx, yy, deep + 1) == true){
             if(deep == 0){
                 var index = Math.floor(Math.random()*len);
-                var last = Object.assign({}, enermy);
+                var last = Object.assign({}, enemy);
                 if(Math.random() >= 0.4 || len <= 2)
-                    enermy = {x: xx, y: yy};
+                    enemy = {x: xx, y: yy};
                 else
-                    enermy = {x: next[index].x, y: next[index].y};
+                    enemy = {x: next[index].x, y: next[index].y};
                 redrawBot(last);
             }
             return true;
@@ -45,16 +45,17 @@ function dfs(x, y, deep) {      //通过dfs搜索走向玩家的路径
     return false;
 }
 
-function enermyGo(){
+function enemyGo(){
     for(var i = 0; i <= r * c; i++){
         vis[i] = false;
     }
-    vis[enermy.x * c + enermy.y] = true;
+    vis[enemy.x * c + enemy.y] = true;
     updateProgress();               //更新进度条
-    dfs(enermy.x, enermy.y, 0);     //让敌人走一步
+    dfs(enemy.x, enemy.y, 0);       //让敌人走一步
     checkGame();                    //检查游戏是否已经结束
 }
 
+//时间格式化，加前缀零
 function PrefixInteger(num, n) {
     return (Array(n).join(0) + num).slice(-n);
 }
@@ -72,7 +73,7 @@ function start() {
             document.getElementById("recode-text").innerText = PrefixInteger(min, 2) + ":" + PrefixInteger(sec % 60, 2);
         }, 1000);
         startAnimation(document.getElementById("stgame"));
-        enermyThread = setInterval(enermyGo, 1000);
+        enemyThread = setInterval(enemyGo, 1000);
     } 
     else
         document.getElementById("warning").style.display = "";
@@ -80,11 +81,11 @@ function start() {
 
 //检查游戏是否结束
 function checkGame() {
-    if(now.x == r - 2 && now.y == c - 1){
+    if(now.x == r - 2 && now.y == c - 1){   //玩家胜利
         reset();
         startAnimation(document.getElementById("win"));
     }
-    else if(now.x == enermy.x && now.y == enermy.y){
+    else if(now.x == enemy.x && now.y == enemy.y){    //玩家失败
         reset();
         startAnimation(document.getElementById("lose"));
     }
@@ -93,17 +94,18 @@ function checkGame() {
 //重置游戏
 function reset() {
     now = {x: 2, y: 0};
-    enermy = {x: -1, y: -1};
-    enermyWaite = 30;
+    enemy = {x: -1, y: -1};
+    enemyWaite = 30;
     isStart = false;
     isEnd = true;
     document.getElementById("startgame").disabled = false;
     window.clearInterval(timecnt);
-    window.clearInterval(enermyThread);
+    window.clearInterval(enemyThread);
     sec = 0;
     initMaze();
 }
 
+//关闭警告框
 function closeWarning() {
     document.getElementById("warning").style.display = "none";
 }

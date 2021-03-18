@@ -80,14 +80,14 @@
             let model, webcam, labelContainer, maxPredictions;
             var frame = 0;
             var now = {x: 2, y: 0};         //玩家所在坐标
-            var enermy = {x: -1, y: -1};    //敌人所在坐标
-            var enermyWaite = 30;           //玩家出发后敌人多少时间内不出来
+            var enemy = {x: -1, y: -1};    //敌人所在坐标
+            var enemyWaite = 30;           //玩家出发后敌人多少时间内不出来
             var isStart = false;            //游戏是否开始
             var ready = false;              //摄像头是否准备完毕
             var isEnd = true;               //游戏是否结束
             var sec = 0;                    //游戏已进行秒数
-            var timecnt;
-            var enermyThread;
+            var timecnt;                    //每秒计时
+            var enemyThread;               //敌人每秒寻路
             const dir = [[1, 0], [-1, 0], [0, 1], [0, -1]];
         
             var maze = new Array();         //迷宫地图
