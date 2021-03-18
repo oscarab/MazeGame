@@ -5,7 +5,7 @@ async function init() {
 }
 
 var vis = new Array();
-function dfs(x, y, deep) {
+function dfs(x, y, deep) {      //通过dfs搜索走向玩家的路径
     if(x == now.x && y == now.y) return true;
     if(enermyWaite > 0){
         enermyWaite--;
@@ -31,10 +31,12 @@ function dfs(x, y, deep) {
         if(dfs(xx, yy, deep + 1) == true){
             if(deep == 0){
                 var index = Math.floor(Math.random()*len);
+                var last = Object.assign({}, enermy);
                 if(Math.random() >= 0.4 || len <= 2)
                     enermy = {x: xx, y: yy};
                 else
                     enermy = {x: next[index].x, y: next[index].y};
+                redrawBot(last);
             }
             return true;
         }

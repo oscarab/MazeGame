@@ -33,8 +33,9 @@ async function predict() {
         document.getElementById(type).innerHTML = parseInt(probability) + "%";
         if(probability > chpro && probability > 85) choose = type, chpro = probability;
     }
-    if(frame++ > 10 && isStart){
+    if(frame++ > 10 && isStart){        //更新玩家当前位置
         frame = 0;
+        var last = Object.assign({}, now);
         if(choose == "UP"){
             if(now.x > 0 && maze[now.x - 1][now.y] == 0)
                 now.x--;
@@ -51,6 +52,6 @@ async function predict() {
             if(now.y < c - 1 && maze[now.x][now.y + 1] == 0)
                 now.y++;
         }
-        await draw();
+        await redrawPlayer(last);
     }
 }

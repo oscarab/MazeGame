@@ -81,3 +81,24 @@ async function draw() {
         }
     }
 }
+
+//重画玩家
+async function redrawPlayer(player){
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.y * 10, player.x * 10, 10, 10);
+    ctx.fillStyle = '#90ee90';
+    ctx.fillRect(now.y * 10, now.x * 10, 10, 10);
+    
+}
+
+//重画敌人
+function redrawBot(bot) {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(bot.y * 10, bot.x * 10, 10, 10);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(enermy.y * 10, enermy.x * 10, 10, 10);
+}
