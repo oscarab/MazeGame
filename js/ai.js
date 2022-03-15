@@ -35,7 +35,7 @@ async function predict() {
         document.getElementById(type).innerHTML = parseInt(probability) + "%";
         if(probability > chpro && probability > 85) choose = type, chpro = probability;
     }
-    if(frame++ > 10 && isStart){        //更新玩家当前位置
+    if(frame++ > 23 && isStart){        //更新玩家当前位置
         frame = 0;
         var last = Object.assign({}, now);
         if(choose == "UP"){
