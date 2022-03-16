@@ -33,7 +33,7 @@ async function predict() {
         var type = prediction[i].className;
         var probability = prediction[i].probability.toFixed(2) * 100;
         document.getElementById(type).innerHTML = parseInt(probability) + "%";
-        if(probability > chpro && probability > 85) choose = type, chpro = probability;
+        if(probability > chpro && probability > 60) choose = type, chpro = probability;
     }
     if(frame++ > 23 && isStart){        //更新玩家当前位置
         frame = 0;
